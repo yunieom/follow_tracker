@@ -54,7 +54,7 @@ if page == "📊 팔로우/팔로워 비교":
 # --- 맞팔 계정 관리 ---
 elif page == "🤝 이븐맞팔방 맞팔 계정 관리":
     st.subheader("🤝 맞팔 계정 등록/삭제")
-    DELETE_PASSWORD = "even2025"  # 고정 비밀번호
+    DELETE_PASSWORD = st.secrets["DELETE_PASSWORD"]
 
     if "target_list" not in st.session_state:
         st.session_state.target_list = []
@@ -226,7 +226,7 @@ elif page == "🤝 이븐맞팔방 맞팔 계정 관리":
 elif page == "🚫 이븐맞팔방 언팔/차단 계정 확인":
     st.subheader("🚫 언팔 및 차단 계정 관리")
 
-    DELETE_PASSWORD = "even2025"  # 고정 비밀번호
+    DELETE_PASSWORD = st.secrets["DELETE_PASSWORD"]
 
     for label, key in [("언팔", "unfollow_list"), ("\ucc28\ub2e8", "block_list")]:
         st.markdown(f"### 📂 {label} 대상 관리")
