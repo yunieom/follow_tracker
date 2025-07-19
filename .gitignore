@@ -6,6 +6,10 @@
 .pnp.js
 
 # testing
+venv/
+
+
+# testing
 /coverage
 
 # next.js
