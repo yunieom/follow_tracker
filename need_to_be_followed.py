@@ -1,4 +1,5 @@
 import json
+import re
 
 # 텍스트를 복붙할 부분
 raw_text = """
@@ -1472,19 +1473,63 @@ raw_text = """
 1138	@sihobebe
 1139	@chu_bbog_e
 1140	@hdh_jinjin2
+506   @i__love__un (아이디변경)
+629   @sunwitheee (휴가복귀)
+856   @min.with.yun  (아이디변경)
+892   @jeyulmom (아이디변경)
+1050   @ra.__.lim (아이디변경)
+1115   @fairy.haruru (해킹정상화 후 복귀)
+
+
+1141   @haeul.and.yeoul
+1142   @myangel_eve
+1143   @haedam.s2
+1144   @love_chan__
+1145   @suyi_bro
+
+1146   @eunbbing
+1147   @ayunrin_
+1148   @imhaon2018
+1149   @natasya.suyeon
+1150   @little.po_do
+
+
+1151   @___ji.u_25428
+1152   @bgwonu__
+1153   @ha.2.yul__b 
+1154   @hi._.kkam
+1155   @iam_____lee
+
+1156   @cowsilver_92
+1157   @p_s_m_1004
+1158   @solune_twins
+1159   @woozdiary_24
+1160   @do_hyun_sea
+
+
+1161   @wow_hayul
+1162   @_twinkle_1118
+1163   @w_lo_na
+1164   @mylovely_forest
+1165   @woo.___.hyuk2
+
+1166   @bunny.arin
+1167   @bongnam_mon
+1168   @iju_twix
+1169   @haerim_1226
+1170   @junvely_22
+1171   @dduonyihyun
+
 """  # 생략된 부분에 전체 데이터를 그대로 넣어야 함
 
-# 라인별로 분할하고 @로 시작하는 것만 추출
-usernames = []
-for line in raw_text.strip().splitlines():
-    parts = line.strip().split("\t")
-    if len(parts) >= 2:
-        username = parts[1].strip()
-        if username.startswith("@"):
-            usernames.append(username)
+# 정규표현식으로 @로 시작해서 공백이나 줄바꿈 전까지의 문자열 추출
+usernames = re.findall(r'@[\w\._]+', raw_text)
+
+# 중복 제거
+usernames = list(dict.fromkeys(usernames))  # 순서 유지하며 중복 제거
 
 # JSON 파일로 저장
-with open("instagram_usernames.json", "w", encoding="utf-8") as f:
+with open("following_list.json", "w", encoding="utf-8") as f:
     json.dump(usernames, f, ensure_ascii=False, indent=2)
 
 print(f"{len(usernames)}개의 유효한 인스타그램 ID가 저장되었습니다.")
