@@ -22,7 +22,7 @@ if page == "📊 팔로우/팔로워 트래커":
         st.session_state.followers_data = json.load(followers_file)
 
 # --- 팔로우/팔로워 비교 ---
-if page == "📊 팔로우/팔로워 비교":
+if page == "📊 팔로우/팔로워 트래커":
     if "following_data" in st.session_state and "followers_data" in st.session_state:
         following_json = st.session_state.following_data
         followers_json = st.session_state.followers_data
