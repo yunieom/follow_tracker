@@ -12,7 +12,7 @@ page = st.sidebar.radio("메뉴", [
 st.title("팔로우/팔로워 관리 도구")
 
 # --- JSON 파일 올바르기 + 세션에 저장 ---
-if page == "📊 팔로우/팔로워 비교":
+if page == "📊 팔로우/팔로워 트래커":
     following_file = st.file_uploader("📄 following.json", type="json", key="follow_file")
     if following_file:
         st.session_state.following_data = json.load(following_file)
